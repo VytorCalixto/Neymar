@@ -1,13 +1,24 @@
 require 'socket'
 
-if ARGV.length != 3
-  puts "Uso correto: ruby client.rb <mensagem> <servidor> <porta>"
-  abort
+class Client
+  
+  attr_accessor :messages
+
+  def initialize(server, port)
+    @socket = UDPSocket.new
+    @socket.connect server, port
+  end
+
+  def send
+    msg = messages.pop
+    p msg
+    @socket.send msg, 0
+  end
+
+  def send_all
+    until messages.empty?
+      send
+    end
+  end
+
 end
-
-message = ARGV[0]
-server = ARGV[1]
-port = ARGV[2]
-
-s = UDPSocket.new
-s.send(message, 0, server, port)

@@ -1,18 +1,13 @@
 require 'socket'
-require_relative 'config'
-
-if ARGV.length != 1
-  puts "Uso correto: ruby server.rb <porta>"
-  abort
-end
-
-port = ARGV[0]
+require 'resolv'
+require_relative 'configuration'
 
 server = UDPSocket.new
-server.bind(nil, port)
+server.bind(Socket.gethostname, Configuration::PORT)
 
+p "Ouvindo..."
 loop do
-  text, sender = server.recvfrom(Config::BUF_SIZE)
-  puts text
-  break if text == "quit"
+  text, sender = server.recvfrom(Configuration::BUF_SIZE)
+  puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
+  break if text == "end"
 end 
