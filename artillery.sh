@@ -1,17 +1,24 @@
 #!/bin/bash
 
-#TODO: Abrir quantidade arbitrária de clientes
-
 server=$1
-client1=$2
-client2=$3
-client3=$4  
+nclients=$2
+machinesfile="machines"
+machinesmax=$(cat "$machinesfile" | wc -l)
 
 if [ "$server" == "-h" ]; then
-  echo "Uso: env PASS=\"<senha>\" ./artillery.sh <servidor> <cliente1> <cliente2> <cliente3>"
+  echo "Uso: env PASS=\"<senha>\" ./artillery.sh <servidor> <número de clientes>"
   exit 0
 fi
 
-./shooter.exp $USER $client1 "ruby Documentos/Programas/Redes2/neymar/main_client.rb $server" &
-./shooter.exp $USER $client2 "ruby Documentos/Programas/Redes2/neymar/main_client.rb $server" &
-./shooter.exp $USER $client3 "ruby Documentos/Programas/Redes2/neymar/main_client.rb $server" &
+if [ "$nclients" -ge "$machinesmax" ]; then
+  echo "Número máximo de máquinas conhecidas é $machinesmax"
+  exit 0
+fi
+
+counter=0
+while IFS='' read -r line || [[ -n "$line" ]] && [ "$counter" -lt "$nclients" ]; do
+  if [ "$line" != "$server" ]; then
+    ./shooter.exp $USER $line "ruby Documentos/Programas/Redes2/neymar/main_client.rb $server" &
+    ((counter++))
+  fi
+done < "machines"
