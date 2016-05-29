@@ -7,7 +7,6 @@ if ARGV.length != 1
 end
 
 server = ARGV[0]
-port = ARGV[1]
 
 client = Client.new(server,Configuration::PORT)
 client.messages = ["5 - HU3", "4 - HUE","3 - LOL","2 - hue","1 - lol"] #TODO

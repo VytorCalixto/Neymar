@@ -1,0 +1,19 @@
+#!/usr/bin/expect -f
+
+set user [lindex $argv 0];
+set server [lindex $argv 1];
+set cmd [lindex $argv 2];
+
+spawn ssh "$user\@$server"
+
+expect {
+  "assword:" {
+    send "$env(PASS)\r"
+    exp_continue
+  }
+  "\\$" {
+    send "$cmd\r"
+    sleep 5
+    send "exit\r"
+  }
+}
