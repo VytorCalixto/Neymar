@@ -10,7 +10,8 @@ clients = {}
 loop do
   text, sender = server.recvfrom(Configuration::BUF_SIZE)
   name = Resolv.getname(sender[3])
-  clients[name] << text.split(' - ')[0] if clients.key? name
+  clients[name] = [] if !clients.key? name
+  clients[name] << text.split(' - ')[0] 
   puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
   break if text == "end"
 end 
