@@ -22,7 +22,7 @@ class Client
   end
 
   def messages= msgs
-    msgs.map.with_index { |m, i| i.to_s+" - "+m }
+    @messages = msgs.map.with_index { |m, i| i.to_s+" - "+m }
   end
 
 end
