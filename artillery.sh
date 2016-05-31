@@ -6,7 +6,7 @@ machinesfile="machines"
 machinesmax=$(cat "$machinesfile" | wc -l)
 
 if [ "$server" == "-h" ]; then
-  echo "Uso: env PASS=\"<senha>\" ./artillery.sh <servidor> <número de clientes>"
+  echo "Uso: ./artillery.sh <servidor> <número de clientes>"
   exit 0
 fi
 
