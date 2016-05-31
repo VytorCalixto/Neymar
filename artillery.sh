@@ -15,6 +15,10 @@ if [ "$nclients" -ge "$machinesmax" ]; then
   exit 0
 fi
 
+read -sp "Entre com a senha de $USER: " pass
+echo -e "\n"
+export PASS=$pass
+
 counter=0
 while IFS='' read -r line || [[ -n "$line" ]] && [ "$counter" -lt "$nclients" ]; do
   if [ "$line" != "$server" ]; then
