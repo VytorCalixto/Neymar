@@ -18,11 +18,9 @@ loop do
   p cmd.strip!
   if commands.include? cmd
     if cmd == '\s'
-      client.messages = ['status']
-      client.send_all
+      client.send('status')
     else
-      client.messages = ['end']
-      client.send_all
+      client.send('end')
       break
     end
   else
