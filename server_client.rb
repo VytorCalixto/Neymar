@@ -1,19 +1,23 @@
 class ServerClient
-  attr_accessor :messages, :name, :nextMessage, :ordered, :missing
+  attr_accessor :messages, :name, :nextMessage, :sorted, :missing
 
   def initialize
     @nextMessage = 0
-    @ordered = true
+    @sorted = true
+    @missing = []
   end
 
   def addMsg msg
-    if msg != nextMessage
-      @ordered = false 
-      @missing << nextMessage
-    end
+    @sorted = false if msg != nextMessage
     @missing.del(msg) if @missing.include? msg
-    @messages.push(msg)
+    @messages << msg
     @nextMessage++
+  end
+
+  def missing
+    return [] unless((@messages.size-@messages.first) < @messages.last)
+    n = (@messages.first..@messages.size).to_a
+    n-@messages
   end
 
 end
