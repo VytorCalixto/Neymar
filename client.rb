@@ -21,4 +21,8 @@ class Client
     end
   end
 
+  def messages= msgs
+    msgs.map.with_index { |m, i| i+" - "+m }
+  end
+
 end

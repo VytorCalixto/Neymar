@@ -1,6 +1,6 @@
 class Configuration
   
-  BUF_SIZE = 16
+  BUF_SIZE = 1024
   PORT = 1337
 
 end

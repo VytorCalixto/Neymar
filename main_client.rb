@@ -1,5 +1,6 @@
 require_relative 'client'
 require_relative 'configuration'
+require 'json'
 
 if ARGV.length != 1
   puts "Uso correto: ruby artillery.rb <servidor>"
@@ -9,5 +10,7 @@ end
 server = ARGV[0]
 
 client = Client.new(server,Configuration::PORT)
-client.messages = ["5 - HU3", "4 - HUE","3 - LOL","2 - hue","1 - lol"] #TODO
+tweets = File.read("tweets.json")
+client.messages = JSON.parse(tweets)["tweets"]
+p client.messages
 client.send_all
