@@ -15,8 +15,8 @@ class ServerClient
   end
 
   def missing
-    return [] unless((@messages.size-@messages.first) < @messages.last)
-    n = (@messages.first..@messages.size).to_a
+    return [] unless((@messages.size) < @messages.last)
+    n = (1..@messages.last).to_a
     n-@messages
   end
 
