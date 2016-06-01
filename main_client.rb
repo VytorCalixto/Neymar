@@ -3,7 +3,7 @@ require_relative 'configuration'
 require 'json'
 
 if ARGV.length != 1
-  puts "Uso correto: ruby artillery.rb <servidor>"
+  puts "Uso correto: ruby main_client.rb <servidor>"
   abort
 end
 
