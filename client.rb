@@ -7,6 +7,7 @@ class Client
   def initialize(server, port)
     @socket = UDPSocket.new
     @socket.connect server, port
+    @messages = []
   end
 
   def send(msg=nil)
