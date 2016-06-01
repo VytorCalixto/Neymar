@@ -13,7 +13,7 @@ loop do
   clients[name] = [] if !clients.key? name
   begin 
     clients[name] << Integer(text.split(' - ')[0])
-  rescue e => ArgumentError
+  rescue ArgumentError
   end
   puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
   break if text == "end"
