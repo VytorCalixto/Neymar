@@ -9,8 +9,8 @@ class Client
     @socket.connect server, port
   end
 
-  def send
-    msg = messages.pop
+  def send(msg=nil)
+    msg = messages.pop if msg.nil?
     p msg
     @socket.send msg, 0
   end
@@ -19,6 +19,10 @@ class Client
     until messages.empty?
       send
     end
+  end
+
+  def messages= msgs
+    @messages = msgs.map.with_index { |m, i| (msgs.size-i).to_s+" - "+m }
   end
 
 end
