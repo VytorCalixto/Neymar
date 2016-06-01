@@ -29,7 +29,7 @@ counter=0
 echo -e "Criando clientes..."
 while IFS='' read -r line || [[ -n "$line" ]] && [ "$counter" -lt "$nclients" ]; do
   if [ "$line" != "$server" ]; then
-    ./shooter.exp $user $line "ruby Documentos/Programas/Redes2/neymar/main_client.rb $server" &
+      ./shooter.exp $user $line "ruby $(pwd)/main_client.rb $server" &
     echo -e "Cliente criado em: $line"
     # Debug:
     # ./shooter.exp -d $USER $line "ruby Documentos/Programas/Redes2/neymar/main_client.rb $server > log_neymar 2>&1" &
