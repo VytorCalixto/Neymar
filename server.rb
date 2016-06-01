@@ -21,6 +21,7 @@ loop do
 end
 p clients
 
+puts clients.size.to_s + " cliente enviaram datagramas."
 clients.each do |k, c|
   puts c.status
 end
