@@ -10,7 +10,7 @@ end
 server = ARGV[0]
 
 client = Client.new(server,Configuration::PORT)
-tweets = File.read("tweets.json")
+tweets = File.read(File.join(File.dirname(__FILE__), "tweets.json"))
 client.messages = JSON.parse(tweets)["tweets"]
 p client.messages
 client.send_all
