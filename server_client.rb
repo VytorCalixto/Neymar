@@ -9,7 +9,7 @@ class ServerClient
   end
 
   def addMsg(msg)
-    @sorted = false if msg != nextMessage
+    @sorted = false if msg < nextMessage
     @messages << msg
     @nextMessage+=1
   end

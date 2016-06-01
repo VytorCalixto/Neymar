@@ -7,10 +7,14 @@ class Client
   def initialize(server, port)
     @socket = UDPSocket.new
     @socket.connect server, port
+    @messages = []
   end
 
   def send(msg=nil)
-    msg = messages.pop if msg.nil?
+    if msg.nil?
+      msg = @messages.first
+      @messages.delete_at(0) 
+    end
     p msg
     @socket.send msg, 0
   end
@@ -21,8 +25,12 @@ class Client
     end
   end
 
-  def messages= msgs
-    @messages = msgs.map.with_index { |m, i| (msgs.size-i).to_s+" - "+m }
+  def messages=(msgs)
+    @messages = msgs.map.with_index { |m, i| (i+1).to_s+" - "+m }
+  end
+
+  def add_messages(msgs)
+    @messages.concat(msgs.map.with_index { |m, i| (@messages.size+i+1).to_s+" - "+m })
   end
 
 end
