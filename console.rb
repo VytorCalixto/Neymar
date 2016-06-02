@@ -12,9 +12,21 @@ server = ARGV[0]
 
 client = Client.new(server,Configuration::PORT)
 
-commands = [{:cmd => '\q', :desc => "Parar o servidor"}, 
+commands = [{:cmd => '\q', :desc => "Parar o servidor"},
             {:cmd => '\s', :desc => "Imprimir status do servidor"},
             {:cmd => 'quit', :desc => "Sair do console"}]
+
+machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
+machines = machines_text.split("\n")
+
+machines.delete_if do |m|
+    ping = `ping -q -c 2 #{m}`
+    if $?.exitstatus !0
+        true
+    end
+end
+
+p machines
 
 loop do
   puts "prompt=>"
