@@ -66,6 +66,7 @@ unless options[:ping].nil?
       machines.delete(machine.strip)
     end
   end
+  print "\r"
   log.info {"#{machines.size} máquinas disponíveis"}
 end
 
@@ -85,12 +86,11 @@ loop do
     text, sender = server.recvfrom(Configuration::ANSWER_BUF_SIZE)
     puts "Status: "
     clients = JSON.parse(text)
-    p clients
-    p num_messages
     clients.each do |c|
       c["lost"]+=num_messages-(c["received"]+c["lost"])
     end
     p clients
+    server.close
   when '\q'
     client.send('end')
   when '\b'
