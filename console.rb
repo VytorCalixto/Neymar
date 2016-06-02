@@ -104,8 +104,14 @@ loop do
         num_messages = Integer($stdin.readline()).abs
       rescue ArgumentError
       end
-      puts "Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes."
+      puts "Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes"
       log.info('Console') {"Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes"}
+      for i in 0..num_machines
+        shooter = `./shooter.exp $USER  #{machines[i]} "ruby $(pwd)/main_client.rb #{server}" &`
+        print "."
+        STDOUT.flush
+      end
+      print "\r"
     else
       puts "ERRO: número inválido de máquinas"
     end
