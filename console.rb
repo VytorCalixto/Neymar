@@ -15,7 +15,7 @@ client = Client.new(server,Configuration::PORT)
 commands = [{:cmd => '\q', :desc => "Parar o servidor"},
             {:cmd => '\s', :desc => "Imprimir status do servidor"},
             {:cmd => 'quit', :desc => "Sair do console"},
-            {:cmd => '\t', :desc => 'Bombardeia o servidor'}]
+            {:cmd => '\b', :desc => 'Bombardeia o servidor'}]
 
 machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
 machines = machines_text.split("\n")
@@ -30,7 +30,7 @@ end
 puts "Existem #{machines.size} máquinas disponíveis."
 
 loop do
-  puts "prompt=>"
+  puts "neymar-console=>"
   cmd = $stdin.readline()
   case cmd.strip!
   when '\s'
@@ -43,6 +43,24 @@ loop do
     p clients
   when '\q'
     client.send('end')
+  when '\b'
+    puts "Quantas máquinas? (Max: #{machines.size})"
+    num_machines = 0
+    begin
+      num_machines = Integer.new($stdin.readline().strip!).abs
+    rescue ArgumentError
+    end
+    if num_machines <= machines.size
+      puts "Quantas mensagens? (por padrão 61)"
+      num_messages = 61
+      begin
+        num_messages = Integer.new($stdin.readline()).abs
+      rescue ArgumentError
+      end
+      puts "Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes."
+    else
+      puts "ERRO: número inválido de máquinas"
+    end
   when 'quit'
     break
   else
