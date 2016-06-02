@@ -42,6 +42,7 @@ end
 
 file = File.open('neymar.log', File::WRONLY | File::APPEND)
 log = Logger.new(file)
+log.progname = "Console"
 
 server = options[:server]
 
@@ -57,20 +58,20 @@ machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
 machines = machines_text.split("\n")
 
 unless options[:ping].nil?
-  log.info('Console') {"Verificando disponibilidade de #{machines.size} possíveis clientes"}
+  log.info {"Verificando disponibilidade de #{machines.size} possíveis clientes"}
   print "Verificando máquinas"
   machines.delete_if do |m|
       print "."
       STDOUT.flush
-      log.debug('Console') {"Ping em #{m}"}
+      log.debug {"Ping em #{m}"}
       ping = `ping -q -c 1 #{m} > /dev/null`
       if $?.exitstatus != 0
-          log.debug('Console') {"#{m} não responde"}
+          log.warn {"#{m} não responde"}
           true
       end
   end
   print "\r"
-  log.info('Console') {"#{machines.size} máquinas disponíveis"}
+  log.info {"#{machines.size} máquinas disponíveis"}
 end
 
 puts "Existem #{machines.size} máquinas disponíveis."
@@ -105,7 +106,7 @@ loop do
       rescue ArgumentError
       end
       puts "Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes"
-      log.info('Console') {"Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes"}
+      log.info {"Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes"}
       for i in 0..num_machines
         shooter = `./shooter.exp $USER  #{machines[i]} "ruby $(pwd)/main_client.rb #{server}" &`
         print "."

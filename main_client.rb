@@ -1,4 +1,6 @@
 require 'json'
+require 'logger'
+require 'socket'
 require_relative 'client'
 require_relative 'configuration'
 
@@ -9,6 +11,12 @@ end
 
 server = ARGV[0]
 client = Client.new(server,Configuration::PORT)
+
+file = File.open('neymar.log', File::WRONLY | File::APPEND)
+log = Logger.new(file)
+hostname = Socket.gethostname
+log.progname = "Cliente #{hostname}"
+log.info {"#{hostname} se conectou"}
 
 tweets_text = File.read(File.join(File.dirname(__FILE__), "tweets.json"))
 tweets = JSON.parse(tweets_text)["tweets"]
@@ -29,4 +37,6 @@ else
   end
 end
 p client.messages
+log.info {"#{hostname} começou a enviar #{client.messages.size} mensagens"}
 client.send_all
+log.info {"#{hostname} terminou de enviar as mensagens"}

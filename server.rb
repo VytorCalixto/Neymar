@@ -8,11 +8,12 @@ require_relative 'client'
 
 file = File.open('neymar.log', File::WRONLY | File::APPEND | File::CREAT)
 log = Logger.new(file)
+log.progname = "Servidor"
 
 server = UDPSocket.new
 server.bind(Socket.gethostname, Configuration::PORT)
-log.info('Server') {"Servidor conectado"}
-log.info('Server') {"Ouvindo..."}
+log.info {"Servidor conectado"}
+log.info {"Ouvindo..."}
 
 p "Ouvindo..."
 clients = []
@@ -26,6 +27,7 @@ loop do
   if text == "status"
     client = Client.new(name,Configuration::ANSWER_PORT)
     client.send(JSON.generate(clients))
+    log.info {"Enviando status atual"}
   else
     i = clients.index {|c| c.name == name }
     if i.nil?
@@ -37,9 +39,10 @@ loop do
     rescue ArgumentError
     end
     puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
-    log.debug('Server') {"Recebi: "+text+" de "+Resolv.getname(sender[3])}
+    log.debug {"Recebi: "+text+" de "+Resolv.getname(sender[3])}
   end
 end
+log.info {"Servidor encerrado"}
 p clients
 
 puts clients.size.to_s + " cliente enviaram datagramas."
