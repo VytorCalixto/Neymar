@@ -38,14 +38,14 @@ loop do
       clients[i].add_msg(Integer(text.split(' - ')[0]))
     rescue ArgumentError
     end
-    puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
+    # puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
     log.debug {"Recebi: "+text+" de "+Resolv.getname(sender[3])}
   end
 end
 log.info {"Servidor encerrado"}
 p clients
 
-puts clients.size.to_s + " cliente enviaram datagramas."
+puts clients.size.to_s + " clientes enviaram datagramas."
 clients.each do |c|
   puts c.status
 end
