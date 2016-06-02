@@ -10,6 +10,18 @@ server = ARGV[0]
 
 client = Client.new(server,Configuration::PORT)
 
+machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
+machines = machines_text.split("\n")
+
+machines.delete_if do |m|
+    result = `ping -q -c 2 #{m}`
+    if $?.exitstatus != 0
+        true
+    end
+end
+
+p machines
+
 commands = ['\q', '\s']
 
 loop do
