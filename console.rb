@@ -4,7 +4,7 @@ require_relative 'client'
 require_relative 'configuration'
 
 if ARGV.length != 1
-  puts "Uso correto: ruby main_server.rb <servidor>"
+  puts "Uso correto: ruby console.rb <servidor>"
   abort
 end
 
@@ -14,19 +14,20 @@ client = Client.new(server,Configuration::PORT)
 
 commands = [{:cmd => '\q', :desc => "Parar o servidor"},
             {:cmd => '\s', :desc => "Imprimir status do servidor"},
-            {:cmd => 'quit', :desc => "Sair do console"}]
+            {:cmd => 'quit', :desc => "Sair do console"},
+            {:cmd => '\t', :desc => 'Bombardeia o servidor'}]
 
 machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
 machines = machines_text.split("\n")
 
 machines.delete_if do |m|
     ping = `ping -q -c 2 #{m}`
-    if $?.exitstatus !0
+    if $?.exitstatus != 0
         true
     end
 end
 
-p machines
+puts "Existem #{machines.size} máquinas disponíveis."
 
 loop do
   puts "prompt=>"
