@@ -28,7 +28,6 @@ loop do
     client = Client.new(name,Configuration::ANSWER_PORT)
     client.send(JSON.generate(clients))
     log.info {"Enviando status atual"}
-    client.close
   else
     i = clients.index {|c| c.name == name }
     if i.nil?
