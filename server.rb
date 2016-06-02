@@ -1,12 +1,18 @@
 require 'socket'
 require 'resolv'
 require 'json'
+require 'logger'
 require_relative 'configuration'
 require_relative 'server_client'
 require_relative 'client'
 
+file = File.open('server.log', File::WRONLY | File::APPEND | File::CREAT)
+log = Logger.new(file)
+
 server = UDPSocket.new
 server.bind(Socket.gethostname, Configuration::PORT)
+log.info {"Servidor conectado"}
+log.info {"Ouvindo..."}
 
 p "Ouvindo..."
 clients = []
@@ -14,9 +20,9 @@ loop do
   text, sender = server.recvfrom(Configuration::BUF_SIZE)
 
   break if text == "end"
-  
+
   name = Resolv.getname(sender[3])
-  
+
   if text == "status"
     client = Client.new(name,Configuration::ANSWER_PORT)
     client.send(JSON.generate(clients))
@@ -31,6 +37,7 @@ loop do
     rescue ArgumentError
     end
     puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
+    log.debug {"Recebi: "+text+" de "+Resolv.getname(sender[3])}
   end
 end
 p clients
