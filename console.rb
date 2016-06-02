@@ -77,6 +77,8 @@ end
 
 puts "Existem #{machines.size} máquinas disponíveis."
 
+num_machines = 0
+num_messages = 61
 loop do
   print "neymar-console=> "
   STDOUT.flush
@@ -89,12 +91,14 @@ loop do
     text, sender = server.recvfrom(Configuration::ANSWER_BUF_SIZE)
     puts "Status: "
     clients = JSON.parse(text)
+    clients.each do |c|
+      c[:lost]+=num_messages-c[:received]
+    end
     p clients
   when '\q'
     client.send('end')
   when '\b'
     puts "Quantas máquinas? (Max: #{machines.size})"
-    num_machines = 0
     begin
       num_machines = Integer($stdin.readline().strip!).abs
     rescue ArgumentError
@@ -102,7 +106,6 @@ loop do
 
     if num_machines <= machines.size
       puts "Quantas mensagens? (por padrão 61)"
-      num_messages = 61
       begin
         num_messages = Integer($stdin.readline()).abs
       rescue ArgumentError
