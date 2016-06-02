@@ -6,13 +6,13 @@ require_relative 'configuration'
 require_relative 'server_client'
 require_relative 'client'
 
-file = File.open('server.log', File::WRONLY | File::APPEND | File::CREAT)
+file = File.open('neymar.log', File::WRONLY | File::APPEND | File::CREAT)
 log = Logger.new(file)
 
 server = UDPSocket.new
 server.bind(Socket.gethostname, Configuration::PORT)
-log.info {"Servidor conectado"}
-log.info {"Ouvindo..."}
+log.info('Server') {"Servidor conectado"}
+log.info('Server') {"Ouvindo..."}
 
 p "Ouvindo..."
 clients = []
@@ -37,7 +37,7 @@ loop do
     rescue ArgumentError
     end
     puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
-    log.debug {"Recebi: "+text+" de "+Resolv.getname(sender[3])}
+    log.debug('Server') {"Recebi: "+text+" de "+Resolv.getname(sender[3])}
   end
 end
 p clients
