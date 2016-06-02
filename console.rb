@@ -25,7 +25,10 @@ machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
 machines = machines_text.split("\n")
 
 log.info('Console') {"Verificando disponibilidade de #{machines.size} possíveis clientes"}
+print "Verificando máquinas"
 machines.delete_if do |m|
+    print "."
+    $STDOUT.flush
     log.debug('Console') {"Ping em #{m}"}
     ping = `ping -q -c 2 #{m}`
     if $?.exitstatus != 0
@@ -33,7 +36,7 @@ machines.delete_if do |m|
         true
     end
 end
-log.info('Console') {"#{machins.size} máquinas disponíveis"}
+log.info('Console') {"#{machines.size} máquinas disponíveis"}
 
 puts "Existem #{machines.size} máquinas disponíveis."
 
