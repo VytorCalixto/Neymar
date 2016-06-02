@@ -89,6 +89,7 @@ loop do
     puts "Status: "
     clients = JSON.parse(text)
     p clients
+    server.close
   when '\q'
     client.send('end')
   when '\b'
