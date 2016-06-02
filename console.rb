@@ -2,6 +2,7 @@ require 'socket'
 require 'json'
 require 'logger'
 require 'optparse'
+require 'io/console'
 require_relative 'client'
 require_relative 'configuration'
 
@@ -40,7 +41,7 @@ rescue OptionParser::InvalidOption, OptionParser::MissingArgument
   exit
 end
 
-file = File.open('neymar.log', File::WRONLY | File::APPEND)
+file = File.open(File.join(File.dirname(__FILE__), 'neymar.log'), File::WRONLY | File::APPEND)
 log = Logger.new(file)
 log.progname = "Console"
 
@@ -64,10 +65,10 @@ unless options[:ping].nil?
       print "."
       STDOUT.flush
       log.debug {"Ping em #{m}"}
-      ping = `ping -q -c 1 #{m} > /dev/null`
+      ping = `ping -q -c 1 -W 1 #{m} > /dev/null`
       if $?.exitstatus != 0
-          log.warn {"#{m} não responde"}
-          true
+        log.warn {"#{m} não responde"}
+        true
       end
   end
   print "\r"
@@ -85,7 +86,7 @@ loop do
     server = UDPSocket.new
     server.bind(Socket.gethostname, Configuration::ANSWER_PORT)
     client.send('status')
-    text, sender = server.recvfrom(Configuration::BUF_SIZE)
+    text, sender = server.recvfrom(Configuration::ANSWER_BUF_SIZE)
     puts "Status: "
     clients = JSON.parse(text)
     p clients
@@ -98,6 +99,7 @@ loop do
       num_machines = Integer($stdin.readline().strip!).abs
     rescue ArgumentError
     end
+
     if num_machines <= machines.size
       puts "Quantas mensagens? (por padrão 61)"
       num_messages = 61
@@ -107,11 +109,18 @@ loop do
       end
       puts "Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes"
       log.info {"Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes"}
-      for i in 0..num_machines
-        shooter = `./shooter.exp $USER  #{machines[i]} "ruby $(pwd)/main_client.rb #{server}" &`
-        print "."
-        STDOUT.flush
+      user = ENV["USER"]
+      puts "Entre com senha de #{user}:"
+      pass = STDIN.noecho(&:gets).strip!
+      main_client = "ruby "+Dir.pwd+"/main_client.rb priorat"
+      puts "Criando clientes..."
+      num_machines.times do |i|
+        shooter = "./shooter.exp #{user} #{machines[i]} \"#{main_client}\""
+        pid = spawn({"PASS"=>pass.strip}, shooter, :out=>:out)
+        Process.detach pid
+        puts "Cliente criado em: #{machines[i]}"
       end
+      STDOUT.flush
       print "\r"
     else
       puts "ERRO: número inválido de máquinas"
