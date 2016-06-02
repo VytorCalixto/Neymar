@@ -22,7 +22,7 @@ end
 
 p machines
 
-commands = ['\q', '\s']
+commands = ['\q', '\s', '\t']
 
 loop do
   puts "prompt=>"
@@ -31,6 +31,8 @@ loop do
   if commands.include? cmd
     if cmd == '\s'
       client.send('status')
+    elsif cmd == '\t'
+        puts "Realizando testes"
     else
       client.send('end')
       break
