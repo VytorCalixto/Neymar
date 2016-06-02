@@ -1,27 +1,41 @@
 require 'socket'
 require 'resolv'
+require 'json'
 require_relative 'configuration'
 require_relative 'server_client'
+require_relative 'client'
 
 server = UDPSocket.new
 server.bind(Socket.gethostname, Configuration::PORT)
 
 p "Ouvindo..."
-clients = {}
+clients = []
 loop do
   text, sender = server.recvfrom(Configuration::BUF_SIZE)
-  name = Resolv.getname(sender[3])
-  clients[name] = ServerClient.new(name) if !clients.key? name
-  begin
-    clients[name].addMsg(Integer(text.split(' - ')[0]))
-  rescue ArgumentError
-  end
-  puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
+
   break if text == "end"
+  
+  name = Resolv.getname(sender[3])
+  
+  if text == "status"
+    client = Client.new(name,Configuration::ANSWER_PORT)
+    client.send(JSON.generate(clients))
+  else
+    i = clients.index {|c| c.name == name }
+    if i.nil?
+      i = clients.size
+      clients << ServerClient.new(name)
+    end
+    begin
+      clients[i].add_msg(Integer(text.split(' - ')[0]))
+    rescue ArgumentError
+    end
+    puts "Recebi: "+text+" de "+Resolv.getname(sender[3])
+  end
 end
 p clients
 
 puts clients.size.to_s + " cliente enviaram datagramas."
-clients.each do |k, c|
+clients.each do |c|
   puts c.status
 end

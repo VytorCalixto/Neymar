@@ -1,30 +1,36 @@
+require 'json'
+
 class ServerClient
-  attr_accessor :messages, :name, :nextMessage, :sorted
+  attr_accessor :messages, :name, :missing, :out_of_order
 
   def initialize(name)
     @name = name
     @nextMessage = 1
-    @sorted = true
+    @missing = 0
+    @out_of_order = 0
     @messages = []
   end
 
-  def addMsg(msg)
-    @sorted = false if msg != nextMessage
+  def add_msg(msg)
+    if msg < @nextMessage
+      @out_of_order += 1
+      @missing -= 1
+    elsif msg > @nextMessage
+      @missing += msg-@nextMessage
+    end
     @messages << msg
-    @nextMessage+=1
-  end
-
-  def missing
-    return [] unless((@messages.size) < @messages.last)
-    n = (1..@messages.last).to_a
-    n-@messages
+    @nextMessage = msg+1
   end
 
   def status
-    s = @name + " teve " + missing.size.to_s + " datagramas perdidos e"
-    s += " não " if @sorted
-    s += " teve datagramas desordenados."
-    return s
+    @name+" recebeu "+@messages.size.to_s+" datagramas, teve "+@missing.to_s+" datagramas perdidos e "+@out_of_order.to_s+" datagramas desordenados."
+  end
+
+  def to_json(*a)
+    {:name => @name,
+    :received => @messages.size,
+    :lost => @missing,
+    :out_of_order => @out_of_order}.to_json(*a)
   end
 
 end
