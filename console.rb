@@ -1,5 +1,6 @@
 require 'socket'
 require 'json'
+require 'logger'
 require_relative 'client'
 require_relative 'configuration'
 
@@ -7,6 +8,9 @@ if ARGV.length != 1
   puts "Uso correto: ruby console.rb <servidor>"
   abort
 end
+
+file = File.open('neymar.log', File::WRONLY | File::APPEND)
+log = Logger.new(file)
 
 server = ARGV[0]
 
@@ -20,12 +24,16 @@ commands = [{:cmd => '\q', :desc => "Parar o servidor"},
 machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
 machines = machines_text.split("\n")
 
+log.info('Console') {"Verificando disponibilidade de #{machines.size} possíveis clientes"}
 machines.delete_if do |m|
+    log.debug('Console') {"Ping em #{m}"}
     ping = `ping -q -c 2 #{m}`
     if $?.exitstatus != 0
+        log.debug('Console') {"#{m} não responde"}
         true
     end
 end
+log.info('Console') {"#{machins.size} máquinas disponíveis"}
 
 puts "Existem #{machines.size} máquinas disponíveis."
 
@@ -47,14 +55,14 @@ loop do
     puts "Quantas máquinas? (Max: #{machines.size})"
     num_machines = 0
     begin
-      num_machines = Integer.new($stdin.readline().strip!).abs
+      num_machines = Integer($stdin.readline().strip!).abs
     rescue ArgumentError
     end
     if num_machines <= machines.size
       puts "Quantas mensagens? (por padrão 61)"
       num_messages = 61
       begin
-        num_messages = Integer.new($stdin.readline()).abs
+        num_messages = Integer($stdin.readline()).abs
       rescue ArgumentError
       end
       puts "Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes."
