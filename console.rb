@@ -52,26 +52,20 @@ client = Client.new(server,Configuration::PORT)
 
 commands = [{:cmd => '\q', :desc => "Parar o servidor"},
             {:cmd => '\s', :desc => "Imprimir status do servidor"},
-            {:cmd => 'quit', :desc => "Sair do console"},
-            {:cmd => '\b', :desc => 'Bombardeia o servidor'}]
+            {:cmd => '\b', :desc => 'Bombardeia o servidor'},
+            {:cmd => '\e', :desc => "Sair do console"}]
 
 machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
 machines = machines_text.split("\n")
 
 unless options[:ping].nil?
   log.info {"Verificando disponibilidade de #{machines.size} possíveis clientes"}
-  print "Verificando máquinas"
-  machines.delete_if do |m|
-      print "."
-      STDOUT.flush
-      log.debug {"Ping em #{m}"}
-      ping = `ping -q -c 1 -W 1 #{m} > /dev/null`
-      if $?.exitstatus != 0
-        log.warn {"#{m} não responde"}
-        true
-      end
+  print "Verificando máquinas..."
+  IO.popen("fping -u -t 250 -r 1 "+machines.join(' ')) do |f|
+    f.each do |machine|
+      machines.delete(machine.strip)
+    end
   end
-  print "\r"
   log.info {"#{machines.size} máquinas disponíveis"}
 end
 
@@ -91,8 +85,10 @@ loop do
     text, sender = server.recvfrom(Configuration::ANSWER_BUF_SIZE)
     puts "Status: "
     clients = JSON.parse(text)
+    p clients
+    p num_messages
     clients.each do |c|
-      c[:lost]+=num_messages-c[:received]
+      c["lost"]+=num_messages-(c["received"]+c["lost"])
     end
     p clients
   when '\q'
@@ -128,7 +124,7 @@ loop do
     else
       puts "ERRO: número inválido de máquinas"
     end
-  when 'quit'
+  when '\e'
     break
   else
     puts "Comandos disponíveis: "
