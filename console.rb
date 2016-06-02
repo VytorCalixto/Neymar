@@ -16,6 +16,8 @@ server = ARGV[0]
 
 client = Client.new(server,Configuration::PORT)
 
+puts "-=NEYMAR CONSOLE=-"
+
 commands = [{:cmd => '\q', :desc => "Parar o servidor"},
             {:cmd => '\s', :desc => "Imprimir status do servidor"},
             {:cmd => 'quit', :desc => "Sair do console"},
@@ -28,7 +30,7 @@ log.info('Console') {"Verificando disponibilidade de #{machines.size} possíveis
 print "Verificando máquinas"
 machines.delete_if do |m|
     print "."
-    $STDOUT.flush
+    STDOUT.flush
     log.debug('Console') {"Ping em #{m}"}
     ping = `ping -q -c 2 #{m}`
     if $?.exitstatus != 0
@@ -36,12 +38,14 @@ machines.delete_if do |m|
         true
     end
 end
+print "\r"
 log.info('Console') {"#{machines.size} máquinas disponíveis"}
 
 puts "Existem #{machines.size} máquinas disponíveis."
 
 loop do
-  puts "neymar-console=>"
+  print "neymar-console=> "
+  STDOUT.flush
   cmd = $stdin.readline()
   case cmd.strip!
   when '\s'
@@ -69,6 +73,7 @@ loop do
       rescue ArgumentError
       end
       puts "Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes."
+      log.info('Console') {"Enviando #{num_machines*num_messages} mensagens de #{num_machines} clientes"}
     else
       puts "ERRO: número inválido de máquinas"
     end
@@ -80,4 +85,5 @@ loop do
       puts c[:cmd]+" - "+c[:desc]
     end
   end
+  print "\r"
 end
