@@ -125,7 +125,7 @@ loop do
       user = ENV["USER"]
       puts "Entre com senha de #{user}:"
       pass = STDIN.noecho(&:gets).strip!
-      main_client = "ruby "+Dir.pwd+"/main_client.rb #{server_name}"
+      main_client = "ruby "+Dir.pwd+"/main_client.rb #{server_name} #{num_messages}"
       puts "Criando clientes..."
       num_machines.times do |i|
         shooter = "./shooter.exp #{user} #{machines[i]} \"#{main_client}\""
