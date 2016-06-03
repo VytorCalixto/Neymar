@@ -45,9 +45,9 @@ file = File.open(File.join(File.dirname(__FILE__), 'neymar.log'), File::WRONLY |
 log = Logger.new(file)
 log.progname = "Console"
 
-server = options[:server]
+server_name = options[:server]
 
-client = Client.new(server,Configuration::PORT)
+client = Client.new(server_name,Configuration::PORT)
 
 
 commands = [{:cmd => '\q', :desc => "Parar o servidor"},
@@ -121,11 +121,11 @@ loop do
       user = ENV["USER"]
       puts "Entre com senha de #{user}:"
       pass = STDIN.noecho(&:gets).strip!
-      main_client = "ruby "+Dir.pwd+"/main_client.rb priorat"
+      main_client = "ruby "+Dir.pwd+"/main_client.rb #{server_name}"
       puts "Criando clientes..."
       num_machines.times do |i|
         shooter = "./shooter.exp #{user} #{machines[i]} \"#{main_client}\""
-        pid = spawn({"PASS"=>pass.strip}, shooter, :out=>:out)
+        pid = spawn({"PASS"=>pass.strip}, shooter)
         Process.detach pid
         puts "Cliente criado em: #{machines[i]}"
       end
