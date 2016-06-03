@@ -88,8 +88,8 @@ loop do
     puts "Status: "
     clients = JSON.parse(text)
     log.debug {text}
-    puts "O servidor recebeu mensagens de #{clients.size} máquinas."
-    log.info {"O servidor recebeu mensagens de #{clients.size} máquinas"}
+    puts "O servidor recebeu #{num_messages} mensagens de #{clients.size} máquinas."
+    log.info {"STATUS: O servidor recebeu #{num_messages} mensagens de #{clients.size} máquinas"}
     if clients.size < num_machines
       puts "(#{num_machines-clients.size} máquinas perderam todas as mensagens)"
       log.info {"#{num_machines-clients.size} máquinas perderam todas as mensagens"}
@@ -103,9 +103,9 @@ loop do
       puts "#{c["name"]} recebeu #{c["received"]} datagramas, teve #{c["lost"]} datagramas perdidos e #{c["out_of_order"]} datagramas desordenados."
     end
     puts "Porcentagem total de mensagens perdidas: #{((sum_lost.to_f/(num_messages*num_machines))*100).round(2)}%"
-    log.info {"Porcentagem total de mensagens perdidas: #{((sum_lost.to_f/(num_messages*num_machines))*100).round(2)}%" }
+    log.info {"STATUS: Porcentagem total de mensagens perdidas: #{((sum_lost.to_f/(num_messages*num_machines))*100).round(2)}%" }
     puts "Porcentagem total de mensagens desordenadas: #{((sum_out_of_order.to_f/(num_messages*num_machines))*100).round(2)}%"
-    log.info {"Porcentagem total de mensagens desordenadas: #{((sum_out_of_order.to_f/(num_messages*num_machines))*100).round(2)}%"}
+    log.info {"STATUS: Porcentagem total de mensagens desordenadas: #{((sum_out_of_order.to_f/(num_messages*num_machines))*100).round(2)}%"}
   when '\q'
     client.send('end')
   when '\b'
