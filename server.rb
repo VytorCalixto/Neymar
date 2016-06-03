@@ -6,7 +6,7 @@ require_relative 'configuration'
 require_relative 'server_client'
 require_relative 'client'
 
-file = File.open('neymar.log', File::WRONLY | File::APPEND | File::CREAT)
+file = File.open('server.log', File::WRONLY | File::APPEND | File::CREAT)
 log = Logger.new(file)
 log.progname = "Servidor"
 

@@ -12,7 +12,7 @@ end
 server = ARGV[0]
 client = Client.new(server,Configuration::PORT)
 
-file = File.open(File.join(File.dirname(__FILE__), 'neymar.log'), File::WRONLY | File::APPEND)
+file = File.open(File.join(File.dirname(__FILE__), 'client.log'), File::WRONLY | File::APPEND)
 log = Logger.new(file)
 hostname = Socket.gethostname
 log.progname = "Cliente #{hostname}"

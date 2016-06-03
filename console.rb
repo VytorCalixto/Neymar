@@ -41,7 +41,7 @@ rescue OptionParser::InvalidOption, OptionParser::MissingArgument
   exit
 end
 
-file = File.open(File.join(File.dirname(__FILE__), 'neymar.log'), File::WRONLY | File::APPEND)
+file = File.open(File.join(File.dirname(__FILE__), 'client.log'), File::WRONLY | File::APPEND | File::CREAT)
 log = Logger.new(file)
 log.progname = "Console"
 
