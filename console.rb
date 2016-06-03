@@ -87,6 +87,7 @@ loop do
     server.close
     puts "Status: "
     clients = JSON.parse(text)
+    log.debug {text}
     puts "O servidor recebeu mensagens de #{clients.size} máquinas."
     log.info {"O servidor recebeu mensagens de #{clients.size} máquinas"}
     if clients.size < num_machines
@@ -96,7 +97,7 @@ loop do
     sum_lost = 0
     sum_out_of_order = 0
     clients.each do |c|
-      c["lost"] += num_messages-(c["received"]+c["lost"])
+      c["lost"] = num_messages-(c["received"])
       sum_lost += c["lost"]
       sum_out_of_order += c["out_of_order"]
       puts "#{c["name"]} recebeu #{c["received"]} datagramas, teve #{c["lost"]} datagramas perdidos e #{c["out_of_order"]} datagramas desordenados."
