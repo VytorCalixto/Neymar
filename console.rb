@@ -133,7 +133,9 @@ loop do
         pid = spawn({"PASS"=>pass.strip}, shooter)
         Process.detach pid
         puts "Cliente criado em: #{machines[i]}"
+        log.info {"Cliente criado em #{machines[i]}"}
       end
+      log.info {"As mensagens foram enviadas"}
       STDOUT.flush
       print "\r"
     else
