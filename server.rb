@@ -48,4 +48,5 @@ p clients
 puts clients.size.to_s + " clientes enviaram datagramas."
 clients.each do |c|
   puts c.status
+  log.info {"Cliente #{c.name}, mensagens recebidas: #{c.messages}"}
 end
