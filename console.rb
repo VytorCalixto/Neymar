@@ -84,13 +84,23 @@ loop do
     server.bind(Socket.gethostname, Configuration::ANSWER_PORT)
     client.send('status')
     text, sender = server.recvfrom(Configuration::ANSWER_BUF_SIZE)
+    server.close
     puts "Status: "
     clients = JSON.parse(text)
-    clients.each do |c|
-      c["lost"]+=num_messages-(c["received"]+c["lost"])
+    puts "O servidor recebeu mensagens de #{clients.size} máquinas."
+    if clients.size < num_machines
+      puts "(#{num_machines-clients.size} máquinas perderam todas as mensagens)"
     end
-    p clients
-    server.close
+    sum_lost = 0
+    sum_out_of_order = 0
+    clients.each do |c|
+      c["lost"] += num_messages-(c["received"]+c["lost"])
+      sum_lost += c["lost"]
+      sum_out_of_order += c["out_of_order"]
+      puts "#{c["name"]} recebeu #{c["received"]} datagramas, teve #{c["lost"]} datagramas perdidos e #{c["out_of_order"]} datagramas desordenados."
+    end
+    puts "Porcentagem total de mensagens perdidas: #{((sum_lost.to_f/(num_messages*num_machines))*100).round(2)}%"
+    puts "Porcentagem total de mensagens desordenadas: #{((sum_out_of_order.to_f/(num_messages*num_machines))*100).round(2)}%"
   when '\q'
     client.send('end')
   when '\b'
