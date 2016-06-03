@@ -23,7 +23,7 @@ class ServerClient
   end
 
   def status
-    @name+" recebeu "+@messages.size.to_s+" datagramas, teve "+@missing.to_s+" datagramas perdidos e "+@out_of_order.to_s+" datagramas desordenados."
+    @name+" enviou "+@messages.size.to_s+" datagramas, teve "+@missing.to_s+" datagramas perdidos e "+@out_of_order.to_s+" datagramas desordenados."
   end
 
   def to_json(*a)
