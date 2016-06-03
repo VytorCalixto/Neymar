@@ -50,9 +50,9 @@ server_name = options[:server]
 client = Client.new(server_name,Configuration::PORT)
 
 
-commands = [{:cmd => '\q', :desc => "Parar o servidor"},
-            {:cmd => '\s', :desc => "Imprimir status do servidor"},
-            {:cmd => '\b', :desc => 'Bombardeia o servidor'},
+commands = [{:cmd => '\s', :desc => "Imprimir status do servidor"},
+            {:cmd => '\b', :desc => "Bombardear o servidor"},
+            {:cmd => '\q', :desc => "Parar o servidor"},
             {:cmd => '\e', :desc => "Sair do console"}]
 
 machines_text = File.read(File.join(File.dirname(__FILE__), "machines"))
@@ -63,14 +63,23 @@ unless options[:ping].nil?
   print "Verificando máquinas..."
   IO.popen("fping -u -t 250 -r 1 "+machines.join(' ')) do |f|
     f.each do |machine|
-      machines.delete(machine.strip)
+      machines.delete(machine.strip!)
+      log.warn {"#{machine} não responde"}
     end
   end
   print "\r"
   log.info {"#{machines.size} máquinas disponíveis"}
 end
 
+def print_commands(commands)
+  puts "Comandos disponíveis: "
+  commands.each do |c|
+    puts c[:cmd]+" - "+c[:desc]
+  end
+end
+
 puts "Existem #{machines.size} máquinas disponíveis."
+print_commands(commands)
 
 num_machines = 0
 num_messages = 61
@@ -100,7 +109,7 @@ loop do
       c["lost"] = num_messages-(c["received"])
       sum_lost += c["lost"]
       sum_out_of_order += c["out_of_order"]
-      puts "#{c["name"]} recebeu #{c["received"]} datagramas, teve #{c["lost"]} datagramas perdidos e #{c["out_of_order"]} datagramas desordenados."
+      puts "#{c["name"]} enviou #{c["received"]} datagramas, teve #{c["lost"]} datagramas perdidos e #{c["out_of_order"]} datagramas desordenados."
     end
     puts "Porcentagem total de mensagens perdidas: #{((sum_lost.to_f/(num_messages*num_machines))*100).round(2)}%"
     log.info {"STATUS: Porcentagem total de mensagens perdidas: #{((sum_lost.to_f/(num_messages*num_machines))*100).round(2)}%" }
