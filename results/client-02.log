@@ -1,0 +1,153 @@
+I, [2016-06-04T20:13:36.072876 #11884]  INFO -- Console: Verificando disponibilidade de 70 possíveis clientes
+W, [2016-06-04T20:13:38.621364 #11884]  WARN -- Console: h2.c3local não responde
+W, [2016-06-04T20:13:38.621544 #11884]  WARN -- Console: h8.c3local não responde
+W, [2016-06-04T20:13:38.621576 #11884]  WARN -- Console: h11.c3local não responde
+W, [2016-06-04T20:13:38.621609 #11884]  WARN -- Console: h12.c3local não responde
+W, [2016-06-04T20:13:38.621636 #11884]  WARN -- Console: h13.c3local não responde
+W, [2016-06-04T20:13:38.621671 #11884]  WARN -- Console: h14.c3local não responde
+W, [2016-06-04T20:13:38.621697 #11884]  WARN -- Console: h15.c3local não responde
+W, [2016-06-04T20:13:38.621722 #11884]  WARN -- Console: h17.c3local não responde
+W, [2016-06-04T20:13:38.621748 #11884]  WARN -- Console: h18.c3local não responde
+W, [2016-06-04T20:13:38.621779 #11884]  WARN -- Console: h23.c3local não responde
+W, [2016-06-04T20:13:38.621805 #11884]  WARN -- Console: h24.c3local não responde
+W, [2016-06-04T20:13:38.621830 #11884]  WARN -- Console: h27.c3local não responde
+W, [2016-06-04T20:13:38.621855 #11884]  WARN -- Console: h28.c3local não responde
+W, [2016-06-04T20:13:38.621880 #11884]  WARN -- Console: i1.c3local não responde
+W, [2016-06-04T20:13:38.621906 #11884]  WARN -- Console: i17.c3local não responde
+I, [2016-06-04T20:13:38.622297 #11884]  INFO -- Console: 55 máquinas disponíveis
+I, [2016-06-04T20:13:41.422336 #11884]  INFO -- Console: Enviando 128 mensagens de 2 clientes
+I, [2016-06-04T20:13:43.443951 #11884]  INFO -- Console: Cliente criado em h1.c3local
+I, [2016-06-04T20:13:43.446245 #11884]  INFO -- Console: Cliente criado em h3.c3local
+I, [2016-06-04T20:13:43.446352 #11884]  INFO -- Console: As mensagens foram enviadas
+D, [2016-06-04T20:13:49.208273 #11884] DEBUG -- Console: [{"name":"h1.c3local","received":64,"lost":0,"out_of_order":0},{"name":"h3.c3local","received":64,"lost":0,"out_of_order":0}]
+I, [2016-06-04T20:13:49.208414 #11884]  INFO -- Console: STATUS: O servidor recebeu 64 mensagens de 2 máquinas
+I, [2016-06-04T20:13:49.208594 #11884]  INFO -- Console: STATUS: Porcentagem total de mensagens perdidas: 0.0%
+I, [2016-06-04T20:13:49.208651 #11884]  INFO -- Console: STATUS: Porcentagem total de mensagens desordenadas: 0.0%
+I, [2016-06-04T20:13:54.394659 #11912]  INFO -- Console: Verificando disponibilidade de 70 possíveis clientes
+W, [2016-06-04T20:13:56.936438 #11912]  WARN -- Console: h2.c3local não responde
+W, [2016-06-04T20:13:56.936556 #11912]  WARN -- Console: h8.c3local não responde
+W, [2016-06-04T20:13:56.936591 #11912]  WARN -- Console: h11.c3local não responde
+W, [2016-06-04T20:13:56.936619 #11912]  WARN -- Console: h12.c3local não responde
+W, [2016-06-04T20:13:56.936648 #11912]  WARN -- Console: h13.c3local não responde
+W, [2016-06-04T20:13:56.936675 #11912]  WARN -- Console: h14.c3local não responde
+W, [2016-06-04T20:13:56.936702 #11912]  WARN -- Console: h15.c3local não responde
+W, [2016-06-04T20:13:56.936728 #11912]  WARN -- Console: h17.c3local não responde
+W, [2016-06-04T20:13:56.936754 #11912]  WARN -- Console: h18.c3local não responde
+W, [2016-06-04T20:13:56.936786 #11912]  WARN -- Console: h23.c3local não responde
+W, [2016-06-04T20:13:56.936812 #11912]  WARN -- Console: h24.c3local não responde
+W, [2016-06-04T20:13:56.936838 #11912]  WARN -- Console: h27.c3local não responde
+W, [2016-06-04T20:13:56.936863 #11912]  WARN -- Console: h28.c3local não responde
+W, [2016-06-04T20:13:56.936888 #11912]  WARN -- Console: i1.c3local não responde
+W, [2016-06-04T20:13:56.937012 #11912]  WARN -- Console: i17.c3local não responde
+I, [2016-06-04T20:13:56.937232 #11912]  INFO -- Console: 55 máquinas disponíveis
+I, [2016-06-04T20:14:01.612973 #11912]  INFO -- Console: Enviando 256 mensagens de 2 clientes
+I, [2016-06-04T20:14:06.588999 #11912]  INFO -- Console: Cliente criado em h1.c3local
+I, [2016-06-04T20:14:06.591051 #11912]  INFO -- Console: Cliente criado em h3.c3local
+I, [2016-06-04T20:14:06.591158 #11912]  INFO -- Console: As mensagens foram enviadas
+D, [2016-06-04T20:14:10.110551 #11912] DEBUG -- Console: [{"name":"h3.c3local","received":128,"lost":0,"out_of_order":0},{"name":"h1.c3local","received":36,"lost":0,"out_of_order":0}]
+I, [2016-06-04T20:14:10.110694 #11912]  INFO -- Console: STATUS: O servidor recebeu 128 mensagens de 2 máquinas
+I, [2016-06-04T20:14:10.110905 #11912]  INFO -- Console: STATUS: Porcentagem total de mensagens perdidas: 35.94%
+I, [2016-06-04T20:14:10.110969 #11912]  INFO -- Console: STATUS: Porcentagem total de mensagens desordenadas: 0.0%
+I, [2016-06-04T20:15:14.675879 #11971]  INFO -- Console: Verificando disponibilidade de 70 possíveis clientes
+W, [2016-06-04T20:15:17.233046 #11971]  WARN -- Console: h2.c3local não responde
+W, [2016-06-04T20:15:17.233171 #11971]  WARN -- Console: h8.c3local não responde
+W, [2016-06-04T20:15:17.233204 #11971]  WARN -- Console: h11.c3local não responde
+W, [2016-06-04T20:15:17.233238 #11971]  WARN -- Console: h12.c3local não responde
+W, [2016-06-04T20:15:17.233267 #11971]  WARN -- Console: h13.c3local não responde
+W, [2016-06-04T20:15:17.233294 #11971]  WARN -- Console: h14.c3local não responde
+W, [2016-06-04T20:15:17.233321 #11971]  WARN -- Console: h15.c3local não responde
+W, [2016-06-04T20:15:17.233348 #11971]  WARN -- Console: h17.c3local não responde
+W, [2016-06-04T20:15:17.233375 #11971]  WARN -- Console: h18.c3local não responde
+W, [2016-06-04T20:15:17.233402 #11971]  WARN -- Console: h23.c3local não responde
+W, [2016-06-04T20:15:17.233433 #11971]  WARN -- Console: h24.c3local não responde
+W, [2016-06-04T20:15:17.233460 #11971]  WARN -- Console: h27.c3local não responde
+W, [2016-06-04T20:15:17.233486 #11971]  WARN -- Console: h28.c3local não responde
+W, [2016-06-04T20:15:17.233512 #11971]  WARN -- Console: i1.c3local não responde
+W, [2016-06-04T20:15:17.233539 #11971]  WARN -- Console: i17.c3local não responde
+I, [2016-06-04T20:15:17.233786 #11971]  INFO -- Console: 55 máquinas disponíveis
+I, [2016-06-04T20:15:21.873953 #11971]  INFO -- Console: Enviando 512 mensagens de 2 clientes
+I, [2016-06-04T20:15:24.026881 #11971]  INFO -- Console: Cliente criado em h1.c3local
+I, [2016-06-04T20:15:24.028954 #11971]  INFO -- Console: Cliente criado em h3.c3local
+I, [2016-06-04T20:15:24.029052 #11971]  INFO -- Console: As mensagens foram enviadas
+D, [2016-06-04T20:15:26.928279 #11971] DEBUG -- Console: [{"name":"h1.c3local","received":162,"lost":0,"out_of_order":0}]
+I, [2016-06-04T20:15:26.928414 #11971]  INFO -- Console: STATUS: O servidor recebeu 256 mensagens de 1 máquinas
+I, [2016-06-04T20:15:26.928473 #11971]  INFO -- Console: 1 máquinas perderam todas as mensagens
+I, [2016-06-04T20:15:26.928652 #11971]  INFO -- Console: STATUS: Porcentagem total de mensagens perdidas: 68.36%
+I, [2016-06-04T20:15:26.928699 #11971]  INFO -- Console: STATUS: Porcentagem total de mensagens desordenadas: 0.0%
+I, [2016-06-04T20:15:32.740391 #11994]  INFO -- Console: Verificando disponibilidade de 70 possíveis clientes
+W, [2016-06-04T20:15:35.282357 #11994]  WARN -- Console: h2.c3local não responde
+W, [2016-06-04T20:15:35.282490 #11994]  WARN -- Console: h8.c3local não responde
+W, [2016-06-04T20:15:35.282523 #11994]  WARN -- Console: h11.c3local não responde
+W, [2016-06-04T20:15:35.282559 #11994]  WARN -- Console: h12.c3local não responde
+W, [2016-06-04T20:15:35.282589 #11994]  WARN -- Console: h13.c3local não responde
+W, [2016-06-04T20:15:35.282617 #11994]  WARN -- Console: h14.c3local não responde
+W, [2016-06-04T20:15:35.282645 #11994]  WARN -- Console: h15.c3local não responde
+W, [2016-06-04T20:15:35.282673 #11994]  WARN -- Console: h17.c3local não responde
+W, [2016-06-04T20:15:35.282702 #11994]  WARN -- Console: h18.c3local não responde
+W, [2016-06-04T20:15:35.282730 #11994]  WARN -- Console: h23.c3local não responde
+W, [2016-06-04T20:15:35.282761 #11994]  WARN -- Console: h24.c3local não responde
+W, [2016-06-04T20:15:35.282788 #11994]  WARN -- Console: h27.c3local não responde
+W, [2016-06-04T20:15:35.282816 #11994]  WARN -- Console: h28.c3local não responde
+W, [2016-06-04T20:15:35.282844 #11994]  WARN -- Console: i1.c3local não responde
+W, [2016-06-04T20:15:35.282870 #11994]  WARN -- Console: i17.c3local não responde
+I, [2016-06-04T20:15:35.283127 #11994]  INFO -- Console: 55 máquinas disponíveis
+I, [2016-06-04T20:15:44.286001 #11994]  INFO -- Console: Enviando 1024 mensagens de 2 clientes
+I, [2016-06-04T20:15:46.629372 #11994]  INFO -- Console: Cliente criado em h1.c3local
+I, [2016-06-04T20:15:46.631348 #11994]  INFO -- Console: Cliente criado em h3.c3local
+I, [2016-06-04T20:15:46.631460 #11994]  INFO -- Console: As mensagens foram enviadas
+D, [2016-06-04T20:15:49.230675 #11994] DEBUG -- Console: [{"name":"h3.c3local","received":162,"lost":0,"out_of_order":0},{"name":"h1.c3local","received":7,"lost":338,"out_of_order":0}]
+I, [2016-06-04T20:15:49.230819 #11994]  INFO -- Console: STATUS: O servidor recebeu 512 mensagens de 2 máquinas
+I, [2016-06-04T20:15:49.231042 #11994]  INFO -- Console: STATUS: Porcentagem total de mensagens perdidas: 83.5%
+I, [2016-06-04T20:15:49.231108 #11994]  INFO -- Console: STATUS: Porcentagem total de mensagens desordenadas: 0.0%
+I, [2016-06-04T20:15:55.260842 #12020]  INFO -- Console: Verificando disponibilidade de 70 possíveis clientes
+W, [2016-06-04T20:15:57.807351 #12020]  WARN -- Console: h2.c3local não responde
+W, [2016-06-04T20:15:57.807454 #12020]  WARN -- Console: h8.c3local não responde
+W, [2016-06-04T20:15:57.807486 #12020]  WARN -- Console: h11.c3local não responde
+W, [2016-06-04T20:15:57.807517 #12020]  WARN -- Console: h12.c3local não responde
+W, [2016-06-04T20:15:57.807551 #12020]  WARN -- Console: h13.c3local não responde
+W, [2016-06-04T20:15:57.807580 #12020]  WARN -- Console: h14.c3local não responde
+W, [2016-06-04T20:15:57.807608 #12020]  WARN -- Console: h15.c3local não responde
+W, [2016-06-04T20:15:57.807647 #12020]  WARN -- Console: h17.c3local não responde
+W, [2016-06-04T20:15:57.807677 #12020]  WARN -- Console: h18.c3local não responde
+W, [2016-06-04T20:15:57.807704 #12020]  WARN -- Console: h23.c3local não responde
+W, [2016-06-04T20:15:57.807734 #12020]  WARN -- Console: h24.c3local não responde
+W, [2016-06-04T20:15:57.807761 #12020]  WARN -- Console: h27.c3local não responde
+W, [2016-06-04T20:15:57.807788 #12020]  WARN -- Console: h28.c3local não responde
+W, [2016-06-04T20:15:57.807816 #12020]  WARN -- Console: i1.c3local não responde
+W, [2016-06-04T20:15:57.807843 #12020]  WARN -- Console: i17.c3local não responde
+I, [2016-06-04T20:15:57.808076 #12020]  INFO -- Console: 55 máquinas disponíveis
+I, [2016-06-04T20:16:05.050251 #12020]  INFO -- Console: Enviando 2048 mensagens de 2 clientes
+I, [2016-06-04T20:16:07.112802 #12020]  INFO -- Console: Cliente criado em h1.c3local
+I, [2016-06-04T20:16:07.115077 #12020]  INFO -- Console: Cliente criado em h3.c3local
+I, [2016-06-04T20:16:07.115175 #12020]  INFO -- Console: As mensagens foram enviadas
+D, [2016-06-04T20:16:11.511169 #12020] DEBUG -- Console: [{"name":"h1.c3local","received":163,"lost":464,"out_of_order":0},{"name":"h3.c3local","received":5,"lost":739,"out_of_order":0}]
+I, [2016-06-04T20:16:11.511315 #12020]  INFO -- Console: STATUS: O servidor recebeu 1024 mensagens de 2 máquinas
+I, [2016-06-04T20:16:11.511528 #12020]  INFO -- Console: STATUS: Porcentagem total de mensagens perdidas: 91.8%
+I, [2016-06-04T20:16:11.511586 #12020]  INFO -- Console: STATUS: Porcentagem total de mensagens desordenadas: 0.0%
+I, [2016-06-04T20:16:53.137745 #12049]  INFO -- Console: Verificando disponibilidade de 70 possíveis clientes
+W, [2016-06-04T20:16:55.689542 #12049]  WARN -- Console: h2.c3local não responde
+W, [2016-06-04T20:16:55.689662 #12049]  WARN -- Console: h8.c3local não responde
+W, [2016-06-04T20:16:55.689694 #12049]  WARN -- Console: h11.c3local não responde
+W, [2016-06-04T20:16:55.689729 #12049]  WARN -- Console: h12.c3local não responde
+W, [2016-06-04T20:16:55.689757 #12049]  WARN -- Console: h13.c3local não responde
+W, [2016-06-04T20:16:55.689784 #12049]  WARN -- Console: h14.c3local não responde
+W, [2016-06-04T20:16:55.689811 #12049]  WARN -- Console: h15.c3local não responde
+W, [2016-06-04T20:16:55.689838 #12049]  WARN -- Console: h17.c3local não responde
+W, [2016-06-04T20:16:55.689866 #12049]  WARN -- Console: h18.c3local não responde
+W, [2016-06-04T20:16:55.689897 #12049]  WARN -- Console: h23.c3local não responde
+W, [2016-06-04T20:16:55.689925 #12049]  WARN -- Console: h24.c3local não responde
+W, [2016-06-04T20:16:55.689951 #12049]  WARN -- Console: h27.c3local não responde
+W, [2016-06-04T20:16:55.689978 #12049]  WARN -- Console: h28.c3local não responde
+W, [2016-06-04T20:16:55.690005 #12049]  WARN -- Console: i1.c3local não responde
+W, [2016-06-04T20:16:55.690031 #12049]  WARN -- Console: i17.c3local não responde
+I, [2016-06-04T20:16:55.690294 #12049]  INFO -- Console: 55 máquinas disponíveis
+I, [2016-06-04T20:16:59.924146 #12049]  INFO -- Console: Enviando 256 mensagens de 4 clientes
+I, [2016-06-04T20:17:02.112556 #12049]  INFO -- Console: Cliente criado em h1.c3local
+I, [2016-06-04T20:17:02.115245 #12049]  INFO -- Console: Cliente criado em h3.c3local
+I, [2016-06-04T20:17:02.117553 #12049]  INFO -- Console: Cliente criado em h4.c3local
+I, [2016-06-04T20:17:02.126595 #12049]  INFO -- Console: Cliente criado em h5.c3local
+I, [2016-06-04T20:17:02.126737 #12049]  INFO -- Console: As mensagens foram enviadas
+D, [2016-06-04T20:17:05.808779 #12049] DEBUG -- Console: [{"name":"h1.c3local","received":64,"lost":0,"out_of_order":0},{"name":"h3.c3local","received":64,"lost":0,"out_of_order":0},{"name":"h5.c3local","received":64,"lost":0,"out_of_order":0},{"name":"h4.c3local","received":16,"lost":0,"out_of_order":0}]
+I, [2016-06-04T20:17:05.808942 #12049]  INFO -- Console: STATUS: O servidor recebeu 64 mensagens de 4 máquinas
+I, [2016-06-04T20:17:05.809181 #12049]  INFO -- Console: STATUS: Porcentagem total de mensagens perdidas: 18.75%
+I, [2016-06-04T20:17:05.809251 #12049]  INFO -- Console: STATUS: Porcentagem total de mensagens desordenadas: 0.0%
