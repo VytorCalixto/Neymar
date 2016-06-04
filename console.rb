@@ -107,11 +107,11 @@ loop do
     sum_out_of_order = 0
     clients.each do |c|
       c["lost"] = num_messages-(c["received"])
-      sum_lost += c["lost"]
+      sum_received += c["received"]
       sum_out_of_order += c["out_of_order"]
       puts "#{c["name"]} enviou #{c["received"]} datagramas, teve #{c["lost"]} datagramas perdidos e #{c["out_of_order"]} datagramas desordenados."
     end
-    puts "Porcentagem total de mensagens perdidas: #{((sum_lost.to_f/(num_messages*num_machines))*100).round(2)}%"
+    puts "Porcentagem total de mensagens perdidas: #{(100-(sum_received.to_f/(num_messages*num_machines))*100).round(2)}%"
     log.info {"STATUS: Porcentagem total de mensagens perdidas: #{((sum_lost.to_f/(num_messages*num_machines))*100).round(2)}%" }
     puts "Porcentagem total de mensagens desordenadas: #{((sum_out_of_order.to_f/(num_messages*num_machines))*100).round(2)}%"
     log.info {"STATUS: Porcentagem total de mensagens desordenadas: #{((sum_out_of_order.to_f/(num_messages*num_machines))*100).round(2)}%"}
