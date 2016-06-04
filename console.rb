@@ -103,8 +103,8 @@ loop do
       puts "(#{num_machines-clients.size} máquinas perderam todas as mensagens)"
       log.info {"#{num_machines-clients.size} máquinas perderam todas as mensagens"}
     end
-    sum_lost = 0
     sum_out_of_order = 0
+    sum_received = 0
     clients.each do |c|
       c["lost"] = num_messages-(c["received"])
       sum_received += c["received"]
