@@ -1,0 +1,113 @@
+Nº Mensagens = 256
+
+1 Máquina:
+  Teste 1:
+    Porcentagem total de mensagens perdidas: 35.94%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 2:
+    Porcentagem total de mensagens perdidas: 36.72%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 3:
+    Porcentagem total de mensagens perdidas: 36.33%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 4:
+    Porcentagem total de mensagens perdidas: 36.72%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 5:
+    Porcentagem total de mensagens perdidas: 35.94%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 6:
+    Porcentagem total de mensagens perdidas: 35.94%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 7:
+    Porcentagem total de mensagens perdidas: 35.94%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 8:
+    Porcentagem total de mensagens perdidas: 35.94%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 9:
+    Porcentagem total de mensagens perdidas: 36.72%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 10:
+    Porcentagem total de mensagens perdidas: 35.94%
+    Porcentagem total de mensagens desordenadas: 0.0%
+
+  Média de perdas: 36,213%
+  Média desordenados: 0%
+  Desvio padrão das perdas: 0,37
+  Desvio padrão dos desordenados: 0
+
+16 Máquinas:
+  Teste 1:
+    Porcentagem total de mensagens perdidas: 92.46%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 2:
+    Porcentagem total de mensagens perdidas: 94.38%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 3:
+    Porcentagem total de mensagens perdidas: 95.14%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 4:
+    Porcentagem total de mensagens perdidas: 95.07%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 5:
+    Porcentagem total de mensagens perdidas: 94.51%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 6:
+    Porcentagem total de mensagens perdidas: 94.97%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 7:
+    Porcentagem total de mensagens perdidas: 94.95%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 8:
+    Porcentagem total de mensagens perdidas: 94.29%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 9:
+    Porcentagem total de mensagens perdidas: 95.24%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 10:
+    Porcentagem total de mensagens perdidas: 94.51%
+    Porcentagem total de mensagens desordenadas: 0.0%
+
+  Média de perdas: 94,552%
+  Média desordenados: 0%
+  Desvio padrão das perdas: 0,8096
+  Desvio padrão dos desordenados: 0
+
+55 Máquinas:
+  Teste 1:
+    Porcentagem total de mensagens perdidas: 94.51%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 2:
+    Porcentagem total de mensagens perdidas: 94.72%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 3:
+    Porcentagem total de mensagens perdidas: 94.99%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 4:
+    Porcentagem total de mensagens perdidas: 96.7%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 5:
+    Porcentagem total de mensagens perdidas: 95.5%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 6:
+    Porcentagem total de mensagens perdidas: 96.56%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 7:
+    Porcentagem total de mensagens perdidas: 95.17%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 8:
+    Porcentagem total de mensagens perdidas: 96.7%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 9:
+    Porcentagem total de mensagens perdidas: 95.32%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  Teste 10:
+    Porcentagem total de mensagens perdidas: 96.47%
+    Porcentagem total de mensagens desordenadas: 0.0%
+  
+  Média de perdas: 95,664%
+  Média desordenados: 0%
+  Desvio padrão das perdas: 0,8606
+  Desvio padrão dos desordenados: 0
+

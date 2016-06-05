@@ -97,8 +97,8 @@ loop do
     puts "Status: "
     clients = JSON.parse(text)
     log.debug {text}
-    puts "O servidor recebeu #{num_messages} mensagens de #{clients.size} máquinas."
-    log.info {"STATUS: O servidor recebeu #{num_messages} mensagens de #{clients.size} máquinas"}
+    puts "O servidor recebeu mensagens de #{clients.size} máquinas."
+    log.info {"STATUS: O servidor recebeu mensagens de #{clients.size} máquinas"}
     if clients.size < num_machines
       puts "(#{num_machines-clients.size} máquinas perderam todas as mensagens)"
       log.info {"#{num_machines-clients.size} máquinas perderam todas as mensagens"}
